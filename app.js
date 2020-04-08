@@ -13,12 +13,11 @@ app.use('/users', users);
 app.use('/cards', cards);
 
 app.use((req, res) => {
-    res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
+  res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
 });
 
 
 app.listen(PORT, () => {
-    console.log('Ссылка на сервер:');
-    console.log(BASE_PATH);
-
+  console.log('Ссылка на сервер:');
+  console.log(BASE_PATH);
 });

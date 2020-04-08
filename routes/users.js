@@ -1,31 +1,20 @@
 const router = require('express').Router();
-const fsPromises = require('fs').promises;
+const path = require('path');
 
+const filepath = path.join(__dirname, '../data/users.json');
+const usersData = require(filepath);
 router.get('/', (req, res) => {
-    fsPromises.readFile('./data/users.json')
-        .then((data) => {
-            res.status(200).send(data);
-        })
-        .catch(() => {
-            res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
-        });
+  res.send(usersData);
 });
 router.get('/:id', (req, res) => {
-    fsPromises.readFile('./data/users.json', { encoding: 'utf8' })
-        .then((data) => {
-            const users = JSON.parse(data);
-            let user;
-            users.forEach((item) => {
-                if (item._id === req.params.id) {
-                    user = item;
-                }
-            });
-            if (!user) {
-                res.status(404).send({ message: 'Нет пользователя с таким id' });
-            } else res.status(200).send(user);
-        })
-        .catch(() => {
-            res.status(404).send({ message: 'Запрашиваемый ресурс не найден' });
-        });
+  let user;
+  usersData.forEach((item) => {
+    if (item._id === req.params.id) {
+      user = item;
+    }
+  });
+  if (!user) {
+    res.status(404).send({ message: 'Нет пользователя с таким id' });
+  } else res.status(200).send(user);
 });
 module.exports = router;
