@@ -1,10 +1,16 @@
+const fs = require('fs');
 const router = require('express').Router();
 const path = require('path');
 
 const filepath = path.join(__dirname, '../data/cards.json');
-const cardsData = require(filepath);
 router.get('/', (req, res) => {
-  res.send(cardsData);
+  const reader = fs.createReadStream(filepath, { encoding: 'utf8' });
+  reader.on('data', (data) => {
+    res.send(data);
+  });
+  reader.on('error', () => {
+    res.send({ message: 'Запрашиваемый ресурс не найден' });
+  });
 });
 
 module.exports = router;
