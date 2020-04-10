@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
     res.send(data);
   });
   reader.on('error', () => {
-    res.send({ message: 'Запрашиваемый ресурс не найден' });
+    res.status(500).send({ message: 'Запрашиваемый ресурс не найден' });
   });
 });
 router.get('/:id', (req, res) => {
@@ -28,7 +28,7 @@ router.get('/:id', (req, res) => {
     }
   });
   reader.on('error', () => {
-    res.send({ message: 'Запрашиваемый ресурс не найден' });
+    res.status(500).send({ message: 'Запрашиваемый ресурс не найден' });
   });
 });
 module.exports = router;
