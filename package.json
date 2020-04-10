@@ -1,0 +1,31 @@
+{
+    "name": "project12_v2.github.io",
+    "version": "1.0.0",
+    "description": "The project is creating your own server for the Mesto project.",
+    "main": "app.js",
+    "scripts": {
+        "dev": "nodemon app.js",
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YuriyFeo/project12_v2.github.io.git"
+    },
+    "author": "Yuriy Feoktistov",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/YuriyFeo/project12_v2.github.io/issues"
+    },
+    "homepage": "https://github.com/YuriyFeo/project12_v2.github.io#readme",
+    "dependencies": {
+        "eslint": "^6.1.0",
+        "nodemon": "^2.0.2",
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "body-parser": "^1.19.0",
+        "eslint-config-airbnb-base": "^14.1.0",
+        "eslint-plugin-import": "^2.20.2",
+        "exit-hook": "^2.2.0"
+    }
+}
